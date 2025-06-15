@@ -3,6 +3,7 @@ package io.codeanalyse.server.controller;
 import io.codeanalyse.server.dto.AnalysisRequest;
 import io.codeanalyse.server.dto.AnalysisResponse;
 import io.codeanalyse.server.model.User;
+import io.codeanalyse.server.security.CustomUserDetails;
 import io.codeanalyse.server.service.SubmissionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,7 +25,12 @@ public class SubmissionController {
     @PostMapping("/analyse")
     public ResponseEntity<AnalysisResponse> analyse(
             @RequestBody AnalysisRequest request,
-            @AuthenticationPrincipal User user) {
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) {
+
+        if (customUserDetails == null) {
+            return ResponseEntity.status(401).build();
+        }
+        User user = customUserDetails.getUser();
         return ResponseEntity.ok(submissionService.analyse(request, user));
     }
 }
