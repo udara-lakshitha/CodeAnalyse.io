@@ -18,7 +18,7 @@ except FileNotFoundError:
 # 2. Prepare the Data
 # The 'defects' column is our target (y), the rest are features (X).
 # The last column in the kc1.csv is the 'defects' column.
-features = data.iloc[:, :-1] # Select all rows, and all columns except the last one
+features = data.iloc[:, 1:-1] # Select all rows, and all columns except the last one
 labels = data.iloc[:, -1]   # Select all rows, and only the last column
 
 print(f"Data prepared. Number of features: {len(features.columns)}")
