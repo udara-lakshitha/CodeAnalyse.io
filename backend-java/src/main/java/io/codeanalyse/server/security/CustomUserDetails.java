@@ -1,7 +1,6 @@
 package io.codeanalyse.server.security;
 
 import io.codeanalyse.server.model.User;
-import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

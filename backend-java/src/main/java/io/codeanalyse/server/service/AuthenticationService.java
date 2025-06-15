@@ -6,7 +6,6 @@ import io.codeanalyse.server.dto.SignUpRequest;
 import io.codeanalyse.server.model.User;
 import io.codeanalyse.server.repository.UserRepository;
 import io.codeanalyse.server.security.CustomUserDetails;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
