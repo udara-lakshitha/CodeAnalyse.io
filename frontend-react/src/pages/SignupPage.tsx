@@ -3,7 +3,7 @@ import Button from "../components/Button"
 import Input from "../components/Input"
 import type { SignUpRequest } from "../types/api"
 import { useState } from "react"
-import axios from "axios"
+import apiClient from "../api/axiosConfig";
 
 const SignupPage = () => {
 
@@ -33,7 +33,7 @@ const SignupPage = () => {
         setError(null)
 
         try {
-            const response = await axios.post("http://localhost:8080/api/auth/signup", formData);
+            const response = await apiClient.post("/auth/signup", formData);
             const { token } = response.data
             console.log("Signup successful, token", token)
             alert("Signup successfull!")

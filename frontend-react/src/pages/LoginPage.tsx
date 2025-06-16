@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import type { SignInRequest } from '../types/api';
+import apiClient from "../api/axiosConfig";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     try {
       // 1. Send the API request to our Java backend's signin endpoint.
-      const response = await axios.post('http://localhost:8080/api/auth/signin', formData);
+      const response = await apiClient.post('/auth/signin', formData);
       
       // 2. The backend responds with a JWT token.
       const { token } = response.data;

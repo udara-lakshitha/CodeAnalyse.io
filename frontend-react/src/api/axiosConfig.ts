@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create a new axios instance with a base URL
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080/api', // All requests will be prefixed with this
+  baseURL: import.meta.env.VITE_API_BASE_URL, // All requests will be prefixed with this
 });
 
 // This is an "interceptor". It's a function that runs BEFORE every single request
