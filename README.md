@@ -24,14 +24,11 @@ This project is a comprehensive showcase of modern software engineering, demonst
 
 A user signs up, logs in, is redirected to the dashboard, submits Java code, and receives a real-time analysis from the AI model, complete with professional notifications.
 
-### **Screenshots**
+### Screenshots
 
-| Login & Signup | Dashboard & Analysis |
+| Authentication Flow | Dashboard & Analysis |
 | :---: | :---: |
-| ![Login and Signup Pages]([![image](https://github.com/user-attachments/assets/9630f175-24c5-4d34-9ff2-58e51fbea2b6)
-![image](https://github.com/user-attachments/assets/2002e7cc-8bea-4345-9928-25a062b34d68)
-]) | ![Dashboard with Analysis Results]([![image](https://github.com/user-attachments/assets/ab06e6f6-2d9a-4d41-af1d-27077e7d8d31)
-]) |
+| ![Login Page](https://github.com/user-attachments/assets/9630f175-24c5-4d34-9ff2-58e51fbea2b6) <br> *Login Page* <br><br> ![Signup Page](https://github.com/user-attachments/assets/2002e7cc-8bea-4345-9928-25a062b34d68) <br> *Signup Page* | ![Dashboard with Analysis Results](https://github.com/user-attachments/assets/ab06e6f6-2d9a-4d41-af1d-27077e7d8d31) <br> *Dashboard with AI Analysis Report* |
 
 ---
 
