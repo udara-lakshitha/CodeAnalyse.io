@@ -36,6 +36,6 @@ A user signs up, logs in, is redirected to the dashboard, submits Java code, and
 
 ### Created by: Udara Lakshitha - A passionate developer bridging the gap between enterprise software and artificial intelligence.
 
-LinkedIn: https://linkedin.com/in/yudara-lakshitha
+LinkedIn: https://linkedin.com/in/udara-lakshitha
 
 GitHub: https://github.com/udara-lakshitha
