@@ -1,19 +1,36 @@
 // App.tsx
-import { Outlet } from "react-router-dom"; // Import Outlet
+import { Outlet, Link, useLocation, Navigate } from "react-router-dom";
 
 const App = () => {
+  // useLocation gives us information about the current URL.
+  const location = useLocation();
+
+  // If the user is at the absolute root path, redirect them to the login page.
+  if (location.pathname === "/") {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div>
-      {/* We can put a shared navigation bar or header here later */}
-      <header style={{ padding: '1rem', backgroundColor: '#f0f0f0' }}>
-        <h1>CodeAnalyse.io</h1>
-        {/* We can add navigation links here later */}
+      <header style={{ 
+        padding: '1rem', 
+        backgroundColor: '#f0f0f0', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center' 
+      }}>
+        <h1>
+          <Link to = "/dashboard" style = {{ textDecoration: 'none', color: 'inherit' }}>
+            CodeAnalyse.io
+          </Link>
+        </h1>
+        <nav>
+          <Link to = "/login" style = {{ marginRight: '1rem' }}>Login</Link>
+          <Link to = "/signup">Sign Up</Link>
+        </nav>
       </header>
       
-      <main>
-        {/* The Outlet component is a special placeholder provided by react-router-dom.
-            It tells the router: "If the URL matches one of the child routes,
-            render that child's element right here." */}
+      <main style={{ padding: '1rem' }}>
         <Outlet />
       </main>
     </div>
