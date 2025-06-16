@@ -5,26 +5,24 @@ import io.codeanalyse.server.dto.AnalysisResponse;
 import io.codeanalyse.server.model.Submission;
 import io.codeanalyse.server.model.User;
 import io.codeanalyse.server.repository.SubmissionRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class SubmissionService {
 
     private final RestTemplate restTemplate;
     private final SubmissionRepository submissionRepository;
+    private final String pythonServiceUrl;
 
-    public SubmissionService(SubmissionRepository submissionRepository) {
+    public SubmissionService(SubmissionRepository submissionRepository, @Value("${python.analysis.service.url}") String pythonServiceUrl) {
         this.restTemplate = new RestTemplate();
         this.submissionRepository = submissionRepository;
+        this.pythonServiceUrl = pythonServiceUrl;
     }
 
     public AnalysisResponse analyse(AnalysisRequest request, User user) {
-
-        // URL for python service
-        String pythonServiceUrl = "http://127.0.0.1:5000/predict";
-
         // 1. Call the Python service.
         // We use restTemplate.postForObject, which sends a POST request.
         // - The first argument is the URL.

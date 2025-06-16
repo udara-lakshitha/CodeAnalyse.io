@@ -2,7 +2,7 @@ package io.codeanalyse.server.config;
 
 import io.codeanalyse.server.security.CustomUserDetailsService;
 import io.codeanalyse.server.security.JwtAuthenticationFilter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -32,10 +37,12 @@ public class SecurityConfig {
 
     // This defines our main "Security Filter Chain" bean, which is the rulebook.
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
         http
                 // 1. Disable CSRF (Cross-Site Request Forgery) protection. This is common for stateless REST APIs.
                 .csrf(AbstractHttpConfigurer::disable)
+
+                .cors(cors -> cors.configurationSource(corsConfigurationSource(corsConfigurationSource.toString())))
 
                 // 2. Define authorization rules.
                 .authorizeHttpRequests(request -> request
@@ -55,6 +62,30 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource(@Value("${cors.allowed-origin}") String allowedOrigin) {
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        // This is our "approved visitors" list. We allow our React app's origin.
+        configuration.setAllowedOrigins(List.of(allowedOrigin));
+
+        // We can specify which HTTP methods are allowed (e.g., GET, POST, PUT, DELETE).
+        // Using "*" allows all standard methods.
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // We can specify which headers are allowed to be sent with the request.
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+
+        // This is important for some authentication mechanisms.
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // We apply this CORS configuration to all paths in our application ("/**").
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
     }
 
     // This bean defines the password encoder we will use. BCrypt is the industry standard.
