@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-// Create a new axios instance with a base URL
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // All requests will be prefixed with this
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-// This is an "interceptor". It's a function that runs BEFORE every single request
-// that is sent using this 'apiClient' instance.
 apiClient.interceptors.request.use(
   (config) => {
     // 1. Get the token from localStorage.

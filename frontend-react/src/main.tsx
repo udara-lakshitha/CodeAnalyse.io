@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage.tsx'
 import LoginPage from './pages/LoginPage.tsx'
 import SignupPage from './pages/SignupPage.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
+import { SnackbarProvider } from './context/SnackbarContext.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router = {router} />
+    <SnackbarProvider>
+      <RouterProvider router={router} />
+    </SnackbarProvider>
   </StrictMode>,
 )
