@@ -28,7 +28,10 @@ A user signs up, logs in, is redirected to the dashboard, submits Java code, and
 
 | Login & Signup | Dashboard & Analysis |
 | :---: | :---: |
-| ![Login and Signup Pages]([LINK_TO_AUTH_SCREENSHOT_HERE]) | ![Dashboard with Analysis Results]([LINK_TO_DASHBOARD_SCREENSHOT_HERE]) |
+| ![Login and Signup Pages]([![image](https://github.com/user-attachments/assets/9630f175-24c5-4d34-9ff2-58e51fbea2b6)
+![image](https://github.com/user-attachments/assets/2002e7cc-8bea-4345-9928-25a062b34d68)
+]) | ![Dashboard with Analysis Results]([![image](https://github.com/user-attachments/assets/ab06e6f6-2d9a-4d41-af1d-27077e7d8d31)
+]) |
 
 ---
 
