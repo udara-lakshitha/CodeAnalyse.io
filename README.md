@@ -34,14 +34,8 @@ A user signs up, logs in, is redirected to the dashboard, submits Java code, and
 
 ## 👤 Connect with Me
 
-Created by Udara Lakshitha - A passionate developer bridging the gap between enterprise software and artificial intelligence.
+### Created by: Udara Lakshitha - A passionate developer bridging the gap between enterprise software and artificial intelligence.
 
 LinkedIn: https://linkedin.com/in/yudara-lakshitha
 
 GitHub: https://github.com/udara-lakshitha
-
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-IGNORE_WHEN_COPYING_END
